@@ -25,14 +25,3 @@
     sudo service apache restart
     ```
 
-5. set the default umask for users
-    ```
-    sudo vi /etc/login.defs
-    search for UMASK
-    change UMASK from 022 to 002
-    save it
-    Logout and login so that your umask changes take effect.
-    ```
-
-    Note: You could simply set the umask in your .profile or .bashrc if you wish to restrict this to one user.
-
