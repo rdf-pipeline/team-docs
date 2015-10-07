@@ -5,7 +5,7 @@ to allow any user to run tests without file permission errors.
 
 1. Add your user to www-data group
     ```
-    usermod -a -G www-data <your user>
+    sudo usermod -a -G www-data <your user>
     ```
 
 2. set the guid permissions for /var/www
