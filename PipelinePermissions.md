@@ -1,5 +1,8 @@
 # Setting Pipeline Permissions
 
+This document describe how the RDF pipeline Linux host should be configured
+to allow any user to run tests without file permission errors.
+
 1. Add your user to www-data group
     ```
     usermod -a -G www-data <your user>
