@@ -10,13 +10,11 @@ helpful cheat sheet of useful git commands
 ## RDF Pipeline Team Approach to Git
 
 Our team has agreed to the following approach: 
+
 1. We will perform all work from a branch.
 2. The developer will check in the code and create a pull request for review.
 3. Other team members will try to review changes within 24 hours
-4. Reviewed code will be merged into the master Code will 
-
-We are not currently used forks or a developer branch but may revisit this decision
-at a later date as the project matures.
+4. Reviewed code will be merged into the master or developer branch, as appropriate
 
 There are some helpful git GUI tools available that simplify many of these steps 
 including the <a href="https://desktop.github.com/">Github Desktop App</a>, and 
