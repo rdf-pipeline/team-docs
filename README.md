@@ -24,22 +24,32 @@ git clone https://github.com/rdf-pipeline/noflo-nodejs.git -b develop
 git clone https://github.com/rdf-pipeline/noflo-ui.git -b develop
 git clone https://github.com/rdf-pipeline/noflo-rdf-components.git -b develop
 ```
-3. Install each repository, as per that repository's "README.md" - quick reference:
-
-   a. noflo-nodejs and noflo-ui:
+3. Install noflo-nodejs:
+   
 ```
-npm install
-# only for noflo-ui:
+cd noflo-nodejs
+npm install# only for noflo-ui:
 # grunt build
 npm link
+cd ..
 ```
-   b. noflo-rdf-components
+4. Install noflo-ui:
 ```
+cd noflo-ui
+npm install
+grunt build
+npm link
+cd ..
+```
+5. Install noflo-rdf-components: 
+   
+```
+cd noflo-rdf-components
 npm install
 npm link noflo-nodejs
 ```
 
-4. run an empty NoFlo graph for testing
+6. run an empty NoFlo graph for testing
 ```
 # enter the directory for the repository containing all our custom components
 cd noflo-rdf-components
