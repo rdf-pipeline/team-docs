@@ -28,8 +28,7 @@ git clone https://github.com/rdf-pipeline/noflo-rdf-components.git -b develop
    
 ```
 cd noflo-nodejs
-npm install# only for noflo-ui:
-# grunt build
+npm install
 npm link
 cd ..
 ```
