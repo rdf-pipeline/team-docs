@@ -211,8 +211,9 @@ If we exit noflo-nodejs with `control-C`, we shall find that noflo has saved the
 
 ```bash
 cat output.json
-'''
-'''json
+```
+
+```json
 {
   "properties": {},
   "inports": {},
@@ -242,4 +243,4 @@ cat output.json
 
 You can create or edit these JSON graph definitions by hand if you want.  You can also use `.fpb` files (flow-based-programming) instead of JSON, but we will not discuss that format.
 
-After you have installed the parts, you can move on to [Getting Started](Getting-Started-With-the-RDF-Pipeline) to start building pipelines.
+After you have installed the parts, you can move on to [Getting Started](Getting-Started.md) to start building pipelines.
