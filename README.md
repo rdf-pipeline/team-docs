@@ -19,21 +19,23 @@ This is the quick guide, [click here for the full instructions](Installation.md)
    * node.js LTS "argon" (version 4.8 as of this writing)
 
 2. Clone needed repositories, checking out 'develop' branch
-```
+
+```bash
 git clone https://github.com/rdf-pipeline/noflo-nodejs.git -b develop
 git clone https://github.com/rdf-pipeline/noflo-ui.git -b develop
 git clone https://github.com/rdf-pipeline/noflo-rdf-components.git -b develop
 ```
 3. Install noflo-nodejs:
    
-```
+```bash
 cd noflo-nodejs
 npm install
 npm link
 cd ..
 ```
 4. Install noflo-ui:
-```
+
+```bash
 cd noflo-ui
 npm install
 grunt build
@@ -42,14 +44,15 @@ cd ..
 ```
 5. Install noflo-rdf-components: 
    
-```
+```bash
 cd noflo-rdf-components
 npm install
 npm link noflo-nodejs
 ```
 
 6. run an empty NoFlo graph for testing
-```
+
+```bash
 # enter the directory for the repository containing all our custom components
 cd noflo-rdf-components
 # create an empty JSON graph
