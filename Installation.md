@@ -147,10 +147,13 @@ If your shell found the executables you expected and you got versions you expect
 cd noflo-rdf-components
 # create an empty JSON graph
 echo "{}" > output.json
+
 # Start the NoFlo Engine
 noflo-nodejs --register false --ide http://localhost:8080/ --secret secret --graph output.json --save-graph output.json &
+
 #Start the NoFlo UI
 noflo-ui --secret secret --host localhost --port 8080 --websocket ws://localhost:3569 &
+
 ```
 
 The UI can now be accessed by browsing to [localhost:3569](http://localhost:3569/) and an interface to view and inspect the nodes in the current graph is available at: [localhost:3569/node/](http://localhost:3569/node/) . 
@@ -164,29 +167,39 @@ Now point your web browser at [localhost:3569](http://localhost:3569/). You shou
 
 ![noflo ui without a graph](images/empty-ui.png)
 
-Next, click on the `default/main` graph (upper left). If you see a long list of components, some prefixed with `RDF-COMPONENTS`, then your installation can find important components and you
-can probably create and run graphs. 
+By clicking the name of the graph ( where it says `default/main` in the top left ), you should see a list of components that you can filter through by typing. 
 
-Exit the noflo-nodejs services you started in the background by typing `fg` <enter> `control-C` or by using the kill command.
+Some basic components included with noflo are prefixed with `CORE`, such as `CORE/CALLBACK`. 
 
-So far: NoFlo runs. Now let's run a graph, to be sure that NoFlo can also do that.
+Many of our components start with the prefix `RDF-COMPONENTS`, such as `RDF-COMPONENTS/ADD-METADATA`.
+
+If you see a long list of components that includes both of these examples, then your installation is likely successful. Let's try to create and run a graph to be sure.
+
+** Notes: **
+* We started the NoFlo servers in the background before. If you wish to exit those processes, use the command `fg` to bring the process to the foreground, followed by `control-C`. Alternatively, you may use `ps aux |grep node` to list all running node instances, so you can find the PID and issue the `kill` command to end the processes.
+* You may wish to run the two NoFlo servers in the foreground of different terminal windows, screens, tmux psuedo terminals, etc so that you can easily see the output and any error messages that may come up.
+
 
 ## 7. Run Redux
 
-Note: you may want to run the two servers in the foreground of different terminal windows, screens, or tmux psuedo terminals.
-
-First, we'll create an empty JSON graph `graph/hello.json`.   In a moment we will add to it.
+We just created an empty JSON graph `output.json`.   In a moment we will add to it. If you've already started editing the graph, you may wish to kill the noflo-nodejs server and re-run the following before continuing:
 
 ```bash
-echo '{}' > graphs/hello.json  # This should not yet exist -- it will be created.
-node node_modules/.bin/noflo-nodejs --register false --host localhost --port 3569 --secret mysecret --ide http://localhost:8080/ --graph graphs/hello.json --save-graph graphs/hello.json
+# create an empty JSON graph
+echo "{}" > output.json
+# Start the NoFlo Engine
+noflo-nodejs --register false --ide http://localhost:8080/ --secret secret --graph output.json --save-graph output.json &
 ```
 
-Second, open [localhost:3569](http://localhost:3569/) in your browser and select the `CORE/Output` component to create a node in the graph.  Specify its `in` port to receive the string literal "Hello, JSON". It should look like this:
+Open [localhost:3569](http://localhost:3569/) in your browser, click the `default/main` label and select the `CORE/Output` component to create a node in the graph.  The fastest way is probably to start typing the word "output," and select the component name when it appears on the list.
+
+Once the component appears on the canvas, click it to show the inspector. In the text box next to where it says `in`, type the string literal "Hello, JSON" to cause the component to receive that hard-coded literal as input. It should look like this:
 
 ![noflo ui without a graph](images/hello-json.png)
 
-Third, having set up the graph, we run it by clicking the green "Run" triangle in the upper right corner. At the command line we see:
+Finally, having set up the graph, we run it by clicking the light blue "Run" triangle in the upper right corner. 
+
+At the command line where we ran noflo-nodejs we see:
 
 ```
 Hello, JSON!
@@ -194,22 +207,24 @@ Hello, JSON!
 
 Note that the `CORE/Output` component writes to standard output. In a later exercise, we'll write to the user interface directly.
 
-Finally we exit with `control-C` and find that noflo has saved the modified graph for us in the JSON file:
+If we exit noflo-nodejs with `control-C`, we shall find that noflo has saved the modified graph for us in the JSON file:
 
 ```bash
-cat graphs/hello.json
+cat output.json
+'''
+'''json
 {
   "properties": {},
   "inports": {},
   "outports": {},
   "groups": [],
   "processes": {
-    "core/Output_p4k5c": {
+    "core/Output_cuhrg": {
       "component": "core/Output",
       "metadata": {
         "label": "Output",
         "x": 334,
-        "y": 100
+        "y": 103
       }
     }
   },
@@ -217,7 +232,7 @@ cat graphs/hello.json
     {
       "data": "Hello, JSON!",
       "tgt": {
-        "process": "core/Output_p4k5c",
+        "process": "core/Output_cuhrg",
         "port": "in"
       }
     }

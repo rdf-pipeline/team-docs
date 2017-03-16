@@ -77,13 +77,17 @@ Some basic components included with noflo are prefixed with `CORE`, such as `COR
 
 Many of our components start with the prefix `RDF-COMPONENTS`, such as `RDF-COMPONENTS/ADD-METADATA`.
 
-If you see a long list of components that includes both of these xamples, then your installation is likely successful. Let's try to create and run a graph to be sure.
+If you see a long list of components that includes both of these examples, then your installation is likely successful. Let's try to create and run a graph to be sure.
 
 ## Getting Started
 
-TODO - Quick Guide
-[Full Guide]](Getting-Started.md)
+Open [localhost:3569](http://localhost:3569/) in your browser, click the `default/main` label and select the `CORE/Output` component to create a node in the graph. Click that node, and enter a string literal, such as "Hello, JSON!" in the input field labeled `in`.  Pressing `Escape` `Tab` or `Enter` should hide the inspector, leaving you with a canvas that looks like this:
 
+![noflo ui without a graph](images/hello-json.png)
+
+When you click the blue triangle in the top right, it will print that text out to the same terminal where you ran noflo-nodejs.
+
+[Full Guide](Getting-Started.md)
 
 ### Gitflow
 
