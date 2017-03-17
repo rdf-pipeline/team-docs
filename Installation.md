@@ -1,10 +1,10 @@
 # Installation
 
-The RDF Pipeline Framework is layered on node.js Argon LTS (v4.8.0 as of this writing) and the following noflo components:
+The RDF Pipeline Framework is layered on node.js lts/argon (v4.8.0 as of this writing) and the following noflo components:
  * noflo-nodejs - _the noflo engine_
  * noflo-ui - _the noflo frontend_ 
 
- So, you need to install each in turn and then finally link up our custom RDF Pipeline Framework components.
+ So, you need to install each in turn and then finally link up our custom RDF Pipeline Framework [components](../noflo-rdf-components).
 
 The RDF Pipeline Framework has been tested on Linux platforms: Centos 7.1, Ubuntu 14.04 and Ubuntu 16.04 and on Mac OSX: El Capitan 10.11.6 
 
@@ -27,7 +27,7 @@ This command worked on OSX with homebrew installed:
 brew cask install caskroom/versions/java7
 ```
 
-## 2. Install nodejs LTS version 4.x 'argon'
+## 2. Install nodejs LTS 'argon' (version 4.x)
 You can install the nodejs long term support version using [nvm](http://nvm.sh), through your platform's package manager, or directly from source. 
 
 NVM has the benefit that it will ensure you know the version you're running, though it is a little more involved. Instructions for installing using NVM are included below.
@@ -56,7 +56,7 @@ d. Test it:
 
 ```bash
 node --version # report the version
-#=> 4.8.0 # as of the creation of this document
+#=> 4.8.0      # as of the creation of this document
 
 node -p -e 'process.cwd()' # run a one-liner
 #=> /home/your_user_name
@@ -64,7 +64,6 @@ node -p -e 'process.cwd()' # run a one-liner
 
 ## 3. Install noflo-ui from the RDF Pipeline Framework
 Clone the noflo-ui repository and checkout the develop branch. Follow the instructions in the README.md to install the branch globally via npm link.
-
 
 
 ```bash
@@ -105,9 +104,10 @@ git checkout develop
 npm install
 npm link noflo-nodejs
 ```
+
 ## 6. Test your installation
 
-In this section, we'll start the noFlo service to make sure our installation works.  The JavaScript version of the RDF Pipeline Framework uses NoFlo, which runs on top of node.js.
+The JavaScript version of the RDF Pipeline Framework uses NoFlo on top of Node.js, so before we start transforming data, let's see if NoFlo works.
 
 The simplest graph to run has no nodes and no edges, and therefore doesn't do anything. We use it to test that the NoFlo server and user interface will spin up.
 
@@ -119,11 +119,13 @@ A few brief caveats:
 
 2. The next set of commands make sure you are running the version of node and the noflo server you expect. You may have to issue slightly different commands for your shell.  The commands below used `bash`.
 
-3. You may want to race ahead immediately. We suggest you don't. NoFlo is powerful, but has several moving parts. Be methodical.
+3. You may want to race ahead immediately. We suggest you don't. NoFlo is powerful and has several moving parts. Be methodical.
 
-4. NoFlo generally doesn't log to standard error, leaving that to individual components. It's easy, therefore, for something to be misconfigured and fail silently. Our "small steps, bottom up" approach mitigates some of that potential confusion, especially if you are used to other servers that do the logging.
+4. NoFlo generally doesn't log to standard error, leaving that to individual components. It's easy, therefore, for something to be misconfigured and fail silently. Our "small steps, bottom up" approach mitigates some of that potential confusion, especially if you are used to other servers that do logging differently.
 
-Since the RDF Pipeline Framework uses the NoFlo server, to begin let's first make sure we can run the NoFlo server with node.js that we expect:
+5. Finally, this may look like web development, but in reality, NoFlo lets us compose functionality on the backend. Thus, "console" generally refers to the terminal where we're running noflo-nodejs and not the web inspector console.
+
+Since we use NoFlo to assemble the RDF Pipeline, let's first make sure we can run the NoFlo server and frontend:
 
 ```bash
 type -p node  # dude, where's my node? -p reports the path
@@ -140,7 +142,10 @@ type -p noflo-ui # dude, where's my noflo-ui?
 
 ```
 
-If your shell found the executables you expected and you got versions you expected, let's run an empty NoFlo graph. Run the noflo-ui and noflo-nodejs from the noflo-rdf-components repository:
+If your shell found the executables and version of node we expected, let's run an empty NoFlo graph. 
+
+
+Run noflo-ui and noflo-nodejs from within the noflo-rdf-components directory:
 
 ```bash
 # enter the directory for the repository containing all our custom components
@@ -155,6 +160,8 @@ noflo-nodejs --register false --ide http://localhost:8080/ --secret secret --gra
 noflo-ui --secret secret --host localhost --port 8080 --websocket ws://localhost:3569 &
 
 ```
+
+If the noflo-nodejs and noflo-ui commands don't work, you may have to specify the full path, source your .profile/.bash_profile file, or run the commands as in 2a, above, to initialize NVM.
 
 The UI can now be accessed by browsing to [localhost:3569](http://localhost:3569/) and an interface to view and inspect the nodes in the current graph is available at: [localhost:3569/node/](http://localhost:3569/node/) . 
 
@@ -176,28 +183,28 @@ Many of our components start with the prefix `RDF-COMPONENTS`, such as `RDF-COMP
 If you see a long list of components that includes both of these examples, then your installation is likely successful. Let's try to create and run a graph to be sure.
 
 ** Notes: **
-* We started the NoFlo servers in the background before. If you wish to exit those processes, use the command `fg` to bring the process to the foreground, followed by `control-C`. Alternatively, you may use `ps aux |grep node` to list all running node instances, so you can find the PID and issue the `kill` command to end the processes.
-* You may wish to run the two NoFlo servers in the foreground of different terminal windows, screens, tmux psuedo terminals, etc so that you can easily see the output and any error messages that may come up.
+* We started the NoFlo servers in the background earlier. If you wish to exit those processes, use the command `fg` to bring the process to the foreground, followed by `control-C`. Alternatively, you may use `ps aux |grep node` to list all running node instances, so you can find the PID and issue the `kill` command to end the process of your choosing.
+* You may wish to run the two NoFlo servers in the foreground of different terminal windows, screens, tmux psuedo terminals, etc so that you can easily see the output, any error messages that may come up, and end the process with `control-C`.
 
 
-## 7. Run Redux
+## 7. Running a simple graph
 
 We just created an empty JSON graph `output.json`.   In a moment we will add to it. If you've already started editing the graph, you may wish to kill the noflo-nodejs server and re-run the following before continuing:
 
 ```bash
-# create an empty JSON graph
+# create an empty JSON graph, overwriting any that may be there already
 echo "{}" > output.json
 # Start the NoFlo Engine
-noflo-nodejs --register false --ide http://localhost:8080/ --secret secret --graph output.json --save-graph output.json &
+noflo-nodejs --register false --ide http://localhost:8080/ --secret secret --graph output.json --save-graph output.json
 ```
 
-Open [localhost:3569](http://localhost:3569/) in your browser, click the `default/main` label and select the `CORE/Output` component to create a node in the graph.  The fastest way is probably to start typing the word "output," and select the component name when it appears on the list.
+Open [localhost:3569](http://localhost:3569/) in your browser, click the `default/main` label and select the `CORE/Output` component to create a node in the graph.  The quickest way to find it is by typing part of the name, selecting the component when it appears in the list.
 
-Once the component appears on the canvas, click it to show the inspector. In the text box next to where it says `in`, type the string literal "Hello, JSON" to cause the component to receive that hard-coded literal as input. It should look like this:
+Once the component appears on the canvas (represented as a node with inputs and outputs), click on it to show the inspector. In the text box labeled `in *`, type the string literal "Hello, JSON" to send in that as a hard-coded input. It should look like this:
 
 ![noflo ui without a graph](images/hello-json.png)
 
-Finally, having set up the graph, we run it by clicking the light blue "Run" triangle in the upper right corner. 
+Having set up the graph, we run it by clicking the light blue "Run" triangle in the upper right corner. 
 
 At the command line where we ran noflo-nodejs we see:
 
@@ -241,6 +248,6 @@ cat output.json
 }
 ```
 
-You can create or edit these JSON graph definitions by hand if you want.  You can also use `.fpb` files (flow-based-programming) instead of JSON, but we will not discuss that format.
+You can create or edit these JSON graph definitions by hand if you want.  You can also use `.fpb` files (flow-based-programming) instead of JSON, but we will not discuss that format here.
 
 After you have installed the parts, you can move on to [Getting Started](Getting-Started.md) to start building pipelines.

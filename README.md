@@ -10,7 +10,7 @@ The team-docs repository contains markdown files that describe installation, use
 
 ## Installation
 
-This is the quick guide, [click here for the full instructions](Installation.md)
+This is the quickstart guide. The long-form instructions are [here](Installation.md).
 
 1. Install Prerequisites
    * (optional) Linux VM - Centos/Ubuntu
@@ -71,21 +71,21 @@ The noflo-ui script runs the frontend, which connects to the runtime. Browsing t
 
 ![noflo ui without a graph](images/empty-ui.png)
 
-By clicking the name of the graph ( where it says `default/main` in the top left ), you should see a list of components that you can filter through by typing. 
+By clicking the name of the graph ( where it says `default/main` in the top left ), you should see a list of components. You can filter this list by typing a few characters of the component you wish to find. 
 
 Some basic components included with noflo are prefixed with `CORE`, such as `CORE/CALLBACK`. 
 
 Many of our components start with the prefix `RDF-COMPONENTS`, such as `RDF-COMPONENTS/ADD-METADATA`.
 
-If you see a long list of components that includes both of these examples, then your installation is likely successful. Let's try to create and run a graph to be sure.
+If you see a long list of components that includes both of these examples, then your installation is likely successful. Let's try to create and run a graph to check!
 
 ## Getting Started
 
-Open [localhost:3569](http://localhost:3569/) in your browser, click the `default/main` label and select the `CORE/Output` component to create a node in the graph. Click that node, and enter a string literal, such as "Hello, JSON!" in the input field labeled `in`.  Pressing `Escape` `Tab` or `Enter` should hide the inspector, leaving you with a canvas that looks like this:
+Open [localhost:3569](http://localhost:3569/) in your browser, click the `default/main` label and select the `CORE/Output` component to create a node in the graph. Click that node, and enter a string literal, such as "Hello, JSON!" in the input field labeled `in`.  Pressing `Escape`, `Tab`, or `Enter` should hide the inspector, leaving you with a canvas that looks like this:
 
 ![noflo ui without a graph](images/hello-json.png)
 
-When you click the blue triangle in the top right, it will print that text out to the same terminal where you ran noflo-nodejs.
+When you click the blue triangle in the top right, it will run the flow, and print that text out to the same terminal where you ran noflo-nodejs.
 
 [Full Guide](Getting-Started.md)
 
