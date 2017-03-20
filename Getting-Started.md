@@ -1,9 +1,11 @@
-## This document is out of date
-
-This page walks you through the process of getting a simple pipeline running in the RDF Pipeline Framework.
+This page walks you through the process of getting a simple data transformation pipeline running in the RDF Pipeline Framework.
 
 # Table of Contents
-@@ TODO @@
+
+ * [Background](#background-concepts)
+ * [Getting Started](#getting-started)
+ * [Graph Node Inspector Tool](#node-navigator)
+
 
 # Prerequisites
 * [Installation](./Installation) 
@@ -23,34 +25,34 @@ In this section, we'll create a pipeline, with multiple nodes and edges, that tr
 We'll do each node and edge in turn:
 
 1. Add the _rdf-components/Read-Content_ component by clicking on the "Default Main" link in the upper left hand corner of the page and typing the first few letters _Read-_.  Click on the full component name to select it and drag it to wherever you like on the page.
-[[images/Add-Read-Content-Component.png]]
+![Adding first component](images/Add-Read-Content-Component.png)
 
-2. Configure the _Read Content_ to read file [test/data/cmumps-patient7.jsonld](https://github.com/rdf-pipeline/translators/blob/master/data/fake_cmumps/patient-7/cmumps-patient7.jsonld)  by double clicking on the component.
+2. Configure the _Read Content_ to read file [test/data/cmumps-patient7.jsonld](https://github.com/rdf-pipeline/translators/blob/master/data/fake_cmumps/patient-7/cmumps-patient7.jsonld)  by clicking on the component.
 A configuration view will appear in the upper left hand corner.  Click into the File field and type in this file path: `data/test/cmumps-patient7.jsonld` (TODO: get these relative pathnames right. When the noflo server runs, what's the present working directory?)
-[[images/Set-Read-Content-File.png]]
+![setting read-content component filename input](images/Set-Read-Content-File.png)
 
-3. Add the _rdf-components/Parse-Json_ component by clicking on the "Default Main" link in the upper left hand corner of the page and typing the first few letters _Parse-_.  Click on the full component name to select it and drag it to wherever you like on the page.
-[[images/Add-Parse-Json-Component.png]]
+3. Add the _rdf-components/Parse-Json_ component by clicking on the "Default Main" link in the upper left hand corner of the page and typing the first few letters _Parse-_. (Don't forget the hyphen `-` or you may accidentally pick the strings/parsejson component!)   Click on the full component name to select it and drag it to wherever you like on the page.
+![selecting the parse-json component](images/Add-Parse-Json-Component.png)
 
 4. Link the _Read-Content_ and _Parse-Json_ component by clicking on the output port of _Read-Content_ and dragging the mouse to the input port of _Parse-Json_
-[[images/Link-Read-Content-Parse-Json.png]]
+![connected components](images/Link-Read-Content-Parse-Json.png)
 
 5. Add the _rdf-components/Cmumps2fhir-Demographics_ component by clicking on the "Default Main" link in the upper left hand corner of the page and typing the first few letters _Cmumps2Fhir-_.  Click on the full component name to select it and drag it to wherever you like on the page.
-[[images/Add-Cmumps2Fhir-Demographics.png]]
+![finding cmumps2Fhir component](images/Add-Cmumps2Fhir-Demographics.png)
 
 6. Configure the Cmumps2fhir-Demographics component with an output file for the CMUMPS data (/tmp/cmumps.txt and the FHIR data translation (/tmp/fhir.txt so you can examine them later after the graph runs.
-[[images/Configure-Cmumps2fhir-Demographics.png]]
+![configuring cmumbs2fhir -demographics](images/Configure-Cmumps2fhir-Demographics.png)
 
 7. Draw a link between the _Parse-Json_ component output port, and the data input port on the _Cmumps2fhir-Demographics_ component by clicking on the output port and dragging the mouse over the data port.
 
 8. Add the _rdf-components/VNI-Data-Output_ component by clicking on the "Default Main" link in the upper left hand corner of the page and typing the first few letters _VNI-_.  Click on the full component name to select it and drag it to wherever you like on the page.
-[[images/Add-Vni-Data-Output-Component.png]]
+![adding data ouput](images/Add-Vni-Data-Output-Component.png)
 
 9. Draw a link between the _Cmumps2fhir-Demographics_ component output port, and the data input port on the _VNI-Data-Output_ component by clicking on the output port and dragging the mouse over the input port of the _Vni-Data-Ouput_ component.
-[[images/Cmumps2Fhir-graph.png]]
+![linking cmumps2fhir-demographics and output](images/Cmumps2Fhir-graph.png)
 
 10. Execute the graph by clicking on the green arrow at the upper right corner of the page.   When it says "Finished", look at the window where you ran the noflo-server.  It should look something like this: 
-[[images/Expected-Demographic-Output.png]]
+![expected output](images/Expected-Demographic-Output.png)
 
 11. Take a look at the /tmp/fhir.txt and /tmp/cmumps.txt files you configured and verify the content looks appropriate.  A recent line count looked like this: 
 wc /tmp/fhir.txt /tmp/cmumps.txt 
