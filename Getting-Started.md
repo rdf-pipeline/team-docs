@@ -45,10 +45,10 @@ A configuration view will appear in the upper left hand corner.  Click into the 
 
 7. Draw a link between the _parse-json_ component output port, and the data input port on the _cmumps2fhir-demographics_ component by clicking on the output port and dragging the mouse over the data port.
 
-8. Add the _rdf-components/vni-data-Output_ component by clicking on the "default/main" link in the upper left hand corner of the page and typing the first few letters _VNI-_.  Click on the full component name to select it and drag it to wherever you like on the page.
+8. Add the _rdf-components/vni-data-Output_ component by clicking on the "default/main" link in the upper left hand corner of the page and typing the first few letters _vni-_.  Click on the full component name to select it and drag it to wherever you like on the page.
 ![adding data ouput](images/Add-Vni-Data-Output-Component.png)
 
-9. Draw a link between the _cmumps2fhir-demographics_ component output port, and the data input port on the _VNI-Data-Output_ component by clicking on the output port and dragging the mouse over the input port of the _vni-data-ouput_ component.
+9. Draw a link between the _cmumps2fhir-demographics_ component output port, and the data input port on the _vni-data-Output_ component by clicking on the output port and dragging the mouse over the input port of the _vni-data-ouput_ component.
 ![linking cmumps2fhir-demographics and output](images/Cmumps2Fhir-graph.png)
 
 10. Execute the graph by clicking on the green arrow at the upper right corner of the page.   When it says "Finished", look at the window where you ran the noflo-server.  It should look something like this: 
