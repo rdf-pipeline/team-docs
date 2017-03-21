@@ -55,25 +55,25 @@ This path assumes you are running noflo-nodejs from within the directory of the 
 6. Add the `RDF-COMPONENTS/VNI-DATA-OUTPUT` component by clicking on the `default/main` link in the upper left hand corner of the page and typing the first few letters, "vni-".  Click on the full component name to select it and add it to the canvas. Then, drag it to wherever you like on the page.
 ![adding data ouput](images/Add-Vni-Data-Output-Component.png)
 
-7. Draw a link between the `CMUMPS2FHIR-DEMOGRAPHICS` component's output port, and the data input port on the `VNI-DATA-OUTPUT` component by clicking on the `cmumps2fhir-demographics` node's `output` port and dragging the mouse over to the `in` port of the `vni-data-ouput` node.
+7. Create a link between the `CMUMPS2FHIR-DEMOGRAPHICS` component's output and the `VNI-DATA-OUTPUT` component's input by clicking on the `cmumps2fhir-demographics` node's `output` port and dragging the mouse over to the `in` port of the `vni-data-ouput` node.
 ![linking cmumps2fhir-demographics and output](images/Cmumps2Fhir-graph.png)
 
 8. Execute the graph by clicking on the green arrow at the upper right corner of the page.   When it says "Finished", look at the window where you ran the noflo-server.  It should look something like this: 
 ![expected output](images/Expected-Demographic-Output.png)
 
 9. Take a look at the /tmp/fhir.txt and /tmp/cmumps.txt files you configured and verify the content looks appropriate.  A recent line count looked like this: 
-wc /tmp/fhir.txt /tmp/cmumps.txt 
-      48     190    1675 /tmp/fhir.txt
-      60     283    2945 /tmp/cmumps.txt
-     108     473    4620 total
 
-10. Terminate the noflo-server if desired.
+```
+wc /tmp/fhir.txt /tmp/cmumps.txt 
+      49     192    1682 /tmp/fhir.txt
+      60     283    2945 /tmp/cmumps.txt
+     109     475    4627 total
+```
+
+10. Terminate the noflo-server if you'd like to change the file that the graph is stored in.
 
 So far: we've done a "load and extract" program. It's convenient that the input data is in jsonld format, nonetheless we still need a component that understnd the semantics of the input and can extract the demographics. In general, as an application developer, you know your data's layout and format.
-LPI simplifies the plumbing and lets you reuse commonly occurring patterns.
-
-# TODO
-@@ TODO: 1. Use a node with two inputs, so that the user will see that it waits until both inputs are ready before firing the updater.  2. Show how to write your own updater and component @@
+NoFlo simplifies the plumbing and lets you reuse commonly occurring patterns.
 
 # Node Navigator
 
@@ -82,6 +82,10 @@ The develop branch of df-pipeline/noflo-nodejs includes some monitoring tools lo
 # Conclusion
 
 You've completed the walkthrough. You got the simplest graph to run (no nodes, no edges), a few "hello" graphs to run and finally something simple but representative, a graph that extracts some data.
+
+# TODO
+@@ TODO: 1. Use a node with two inputs, so that the user will see that it waits until both inputs are ready before firing the updater.  2. Show how to write your own updater and component @@
+
 
 # References
 1. [The RDF Pipeline Framework: Automating Distributed, Dependency-Driven Data Pipelines](http://dbooth.org/2013/dils/pipeline/Booth_pipeline.pdf).  Provides concepts and background on the RDF Pipeline Framework, though the examples use the Perl/Apache version.
