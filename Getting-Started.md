@@ -50,7 +50,7 @@ This path assumes you are running noflo-nodejs from within the directory of the 
 
 5. Click on the `cmumps2fhir-demographics` node to configure the component with an output file for the CMUMPS data (cmumps_file: /tmp/cmumps.txt) and the FHIR data translation (fhir_file: /tmp/fhir.txt). That way, we can examine them later after the graph runs.
 
-![configuring cmumps2fhir-demographics](images/Configure-cmumps2fhir-demographics.png)
+![configuring cmumps2fhir-demographics](images/Configure-Cmumps2fhir-Demographics.png)
 
 6. Add the `RDF-COMPONENTS/VNI-DATA-OUTPUT` component by clicking on the `default/main` link in the upper left hand corner of the page and typing the first few letters, "vni-".  Click on the full component name to select it and add it to the canvas. Then, drag it to wherever you like on the page.
 ![adding data ouput](images/Add-Vni-Data-Output-Component.png)
