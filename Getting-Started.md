@@ -8,41 +8,54 @@ This page walks you through the process of getting a simple data transformation 
 
 
 # Prerequisites
-* [Installation](./Installation) 
+* [Installation](./Installation.md) 
 
 # Background concepts
 
-The RDF Pipeline Framework allows dataflow pipelines to be created and executed.  A pipeline is a directed graph of nodes, in which each node can process and store data, and a connection from node X to node Y means that data flows from X to Y.  If a node's input changes, the Framework will fire the node's "updater", which is responsible for updating that node's state.  If the updater changes the node's state, the Framework notifies downstream nodes, which may in turn cause the updaters of those nodes to fire.  Thus, state changes are automatically propagated through the pipeline according to the data dependencies expressed by the pipeline graph, in much the same way that [make](https://en.wikipedia.org/wiki/Make_(software)) or [ant](https://en.wikipedia.org/wiki/Apache_Ant) run commands to update files when their dependencies change.
+The RDF Pipeline Framework provides:
+- a grapical way to describe dataflow pipelines
+- a collection of components for use in data pipelines
+- a means of executing a dataflow pipeline.
+
+A pipeline is represented as a directed graph of nodes, in which each node can process and store data.
+- A connection from node X to node Y means that data flows from X to Y.  
+- If a node's input changes, the node will fire the its "updater", which is responsible for updating that node's state.  
+- When an updater changes a node's state, the Framework notifies any downstream nodes, which may in turn cause the updaters of those nodes to fire, and so on.  
+- Thus, state changes are automatically propagated through the pipeline according to the data dependencies expressed by the pipeline graph, in much the same way that build systems like [make](https://en.wikipedia.org/wiki/Make_(software)) or [ant](https://en.wikipedia.org/wiki/Apache_Ant) update their output when the source files change.
 
 # A Pipeline  
 
 ## Read, Transform, Write
 
-In this section, we'll create a pipeline, with multiple nodes and edges, that transforms data and uses the RDF Pipeline Framework -- not just NoFlo.   The pipeline will read from a file in `.jsonld` format, extract a section of the file, write it to intermediate locations and then summarize the computation.  Each node in this pipeline is created from a pre-existing component.  Later we will see how you can create your own components by defining your own updaters. 
+In this section, we'll create a pipeline that transforms data, using the custom components provided by the RDF Pipeline Framework -- and not just the basic components provided in NoFlo.   The pipeline will read from a file in `.jsonld` format, extract a section of the file, write it to intermediate locations and then summarize the computation.  Each node in this pipeline is created from a pre-existing component.  Later you will learn how you to create your own components by defining your own updaters. 
 
 ## Wire It Up
 
 We'll do each node and edge in turn:
 
-1. Add the _rdf-components/Read-Content_ component by clicking on the "default/main" link in the upper left hand corner of the page and typing the first few letters _Read-_.  Click on the full component name to select it and drag it to wherever you like on the page.
+1. Add the `RDF-COMPONENTS/READ-CONTENT` component by clicking on the `default/main` link in the upper left hand corner of the page and typing the first few letters, "read-".  Click on the full component name to select it and add a new node to the canvas.
 ![Adding first component](images/Add-Read-Content-Component.png)
 
-2. Configure the _Read Content_ to read file [test/data/cmumps-patient7.jsonld](https://github.com/rdf-pipeline/translators/blob/master/data/fake_cmumps/patient-7/cmumps-patient7.jsonld)  by clicking on the component.
-A configuration view will appear in the upper left hand corner.  Click into the File field and type in this file path: `data/test/cmumps-patient7.jsonld`. This path assumes you are running noflo-nodejs from within the directory of the noflo-rdf-components directory; you may need to modify it if you're starting from a different working directory.
+2. Configure the `READ-CONTENT` component to read file [test/data/cmumps-patient7.jsonld](https://github.com/noflo-rdf-pipeline/blob/master/test/data/cmumps-patient7.jsonld)  by clicking on the `read-content` node that appeared on the canvas, and editing the `filename` field in the configuration view that appears in the upper left hand corner.  Click into the `filename` field and type in this file path: `test/data/cmumps-patient7.jsonld`. 
+
+This path assumes you are running noflo-nodejs from within the directory of the noflo-rdf-components directory; you may need to modify it if you're starting from a different working directory.
 ![setting read-content component filename input](images/Set-Read-Content-File.png)
 
-3. Add the _rdf-components/cmumps2fhir-demographics_ component by clicking on the "default/main" link in the upper left hand corner of the page and typing the first few letters _cmumps2fhir-_.  Click on the full component name to select it and drag it to wherever you like on the page.
+3. Add the `RDF-COMPONENTS/CMUMPS2FHIR-DEMOGRAPHICS` component by clicking on the `default/main` link in the upper left hand corner of the page and typing the first few letters, "cmumps2fhir-".  Click on the full component name to select it and add it to the canvas. Then, drag it to wherever you like on the page.
 ![finding cmumps2fhir-demographics component](images/Add-cmumps2Fhir-demographics.png)
 
-4. Configure the cmumps2fhir-demographics component with an output file for the CMUMPS data (cmumps_file: /tmp/cmumps.txt) and the FHIR data translation (fhir_file: /tmp/fhir.txt) so you can examine them later after the graph runs.
+4. Create a data flow path between the two components. Click on the `read-content` node's `output` port, and drag the mouse over to the `cmumps2fhir-demographics` node's `data` port, then release the mouse button.
+
+![linking read-content to cmumps2fhir-demographics](images/Link-Read-Content-Cmumps2Fhir.png)
+
+5. Click on the `cmumps2fhir-demographics` node to configure the component with an output file for the CMUMPS data (cmumps_file: /tmp/cmumps.txt) and the FHIR data translation (fhir_file: /tmp/fhir.txt). That way, we can examine them later after the graph runs.
+
 ![configuring cmumps2fhir-demographics](images/Configure-cmumps2fhir-demographics.png)
 
-5. Draw a link between the _parse-json_ component output port, and the data input port on the _cmumps2fhir-demographics_ component by clicking on the output port and dragging the mouse over the data port.
-
-6. Add the _rdf-components/vni-data-Output_ component by clicking on the "default/main" link in the upper left hand corner of the page and typing the first few letters _vni-_.  Click on the full component name to select it and drag it to wherever you like on the page.
+6. Add the `RDF-COMPONENTS/VNI-DATA-OUTPUT` component by clicking on the `default/main` link in the upper left hand corner of the page and typing the first few letters, "vni-".  Click on the full component name to select it and add it to the canvas. Then, drag it to wherever you like on the page.
 ![adding data ouput](images/Add-Vni-Data-Output-Component.png)
 
-7. Draw a link between the _cmumps2fhir-demographics_ component output port, and the data input port on the _vni-data-Output_ component by clicking on the output port and dragging the mouse over the input port of the _vni-data-ouput_ component.
+7. Draw a link between the `CMUMPS2FHIR-DEMOGRAPHICS` component's output port, and the data input port on the `VNI-DATA-OUTPUT` component by clicking on the `cmumps2fhir-demographics` node's `output` port and dragging the mouse over to the `in` port of the `vni-data-ouput` node.
 ![linking cmumps2fhir-demographics and output](images/Cmumps2Fhir-graph.png)
 
 8. Execute the graph by clicking on the green arrow at the upper right corner of the page.   When it says "Finished", look at the window where you ran the noflo-server.  It should look something like this: 
