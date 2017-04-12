@@ -97,6 +97,6 @@ When you click the blue triangle in the top right, it will run the flow, and pri
  * When LGTM consensus is reached, original Developer merges PR
 
 ## Best Practices
-
- * Please follow the [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
+ * If you come across a "BactrianCamelCase" variable name, it may refer to an imported module, a local class, or an enum
+ * When in doubt, we follow the [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
  
