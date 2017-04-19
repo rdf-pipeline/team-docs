@@ -3,7 +3,10 @@ This page walks you through the process of getting a simple data transformation 
 # Table of Contents
 
  * [Background](#background-concepts)
- * [Single-Path Pipeline](#initial-pipeline)
+ * [Building a Pipeline](#initial-pipeline)
+    * [Single-Path Pipeline](#wire-it-up)
+    * [Adding a Second Path](#adding-a-second-input)
+ * [Build a New Component](#custom-components)
  * [Node Inspector](#node-navigator)
 
 
@@ -23,7 +26,7 @@ A pipeline is represented as a directed graph of nodes, in which each node can p
 - When an updater changes a node's state, the Framework notifies any downstream nodes, which may in turn cause the updaters of those nodes to fire, and so on.
 - Thus, state changes are automatically propagated through the pipeline according to the data dependencies expressed by the pipeline graph, in much the same way that build systems like [make](https://en.wikipedia.org/wiki/Make_(software)) or [ant](https://en.wikipedia.org/wiki/Apache_Ant) update their output when the source files change.
 
-# Initial Pipeline
+# Building a Pipeline
 
 ## Read, Transform, Write
 
@@ -109,6 +112,16 @@ We will now add an additional extraction step between the `READ-CONTENT` and `VN
 
 11. Finally, execute the graph by clicking on the green arrow at the upper right corner of the page.   When it says "Finished", look at the window where you ran the noflo-server.  Now, you should see output for both Patient demographics AND Procedure data!
 ![final output](images/Complete-Output.png)
+
+The `AND-GATE` component is a convenient way to ensure the next node in your pipeline waits for input from all connected nodes before running its updater. However, if you wish to make a component which always has this behavior, you can simply configure its input type in the node definition, as follows:
+```
+  inPorts:{
+    input:{multi: true}
+  },
+```
+We will explore this further in the next section on creating your own RDF Pipeline-compatible components.
+
+# Custom Components
 
 
 # Node Navigator
