@@ -6,6 +6,7 @@ The team-docs repository contains markdown files that describe installation, use
  * [Getting Started](#getting-started)
  * [Development Protocol](#gitflow)
  * [Best Practices](#best-practices)
+ * [Glossary](#glossary)
 
 
 ## Installation
@@ -97,3 +98,10 @@ When you click the blue triangle in the top right, it will run the flow, and pri
  * When LGTM consensus is reached, original Developer merges PR
 
 ## Best Practices
+
+
+## Glossary
+- RDF: Resource Description Framework - an abstract specifications for conceptual modeling of information
+- JSON-LD: JSON with Linked Data - a concrete specification that implements RDF using JSON with context 
+- VNI: Virtual Node Instance
+- 
