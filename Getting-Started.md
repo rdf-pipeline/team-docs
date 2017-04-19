@@ -73,7 +73,7 @@ wc /tmp/fhir.txt /tmp/cmumps.txt
      109     475    4627 total
 ```
 
-10. (optional) Terminate the noflo-server if you'd like to change the file that the graph is stored in.
+10. (optional) Unless you are moving on to [Adding a Second Input](adding-a-second-input) below, you may now terminate noflo-ui and noflo-server. (See [Installation](./Installation.md#Notes) if you'd like a refresher on how this is done). If you would also like to clear the graph, issue the command `echo "{}" > output.json`.
 
 So far: we've done a "load and extract" program. It's convenient that the input data is in jsonld format, nonetheless we still need a component that understand the semantics of the input and can extract the demographics. In general, as an application developer, you know your data's layout and format.
 NoFlo simplifies the plumbing and lets you reuse commonly occurring patterns.
@@ -114,7 +114,8 @@ We will now add an additional extraction step between the `READ-CONTENT` and `VN
 ![final output](images/Complete-Output.png)
 
 The `AND-GATE` component is a convenient way to ensure the next node in your pipeline waits for input from all connected nodes before running its updater. However, if you wish to make a component which always has this behavior, you can simply configure its input type in the node definition, as follows:
-```
+
+```javascript
   inPorts:{
     input:{multi: true}
   },
@@ -122,6 +123,57 @@ The `AND-GATE` component is a convenient way to ensure the next node in your pip
 We will explore this further in the next section on creating your own RDF Pipeline-compatible components.
 
 # Custom Components
+
+In this section, we will show you how to create your own components for use with the RDF Pipeline. If you've just finished the pipeline tutorials above, you will probably want to clear the graph by issuing the command `echo "{}" > output.json`.
+
+We will be assuming that you know how to start and stop noflo-nodejs for this section. If you've forgotten, feel free to review the [Installation](./Installation.md) section.
+
+## Hello World
+
+Ah, the classic example for computer science. Let's make a node that outputs the string "Hello World."
+
+1. Create a new file in the code editor of your choice with the following content:
+
+```javascript
+
+var logger = require('../src/logger');
+var wrapper = require('../src/javascript-wrapper');
+
+module.exports = wrapper({description: "outputs a string with Hello prepended to input",
+                          updater: hello});
+
+function hello(input){
+  logger.debug("Running hello.js component");
+  return "Hello "+input;
+};
+
+```
+
+2. Save this file as `hello.js` in the noflo-rdf-components directory.
+
+3. Edit the package.json file in the rdf-components directory to refer to the new component by inserting the key value pair `"hello-world": "./components/hello.js"` into the `components` object:
+
+```json
+"components": {
+	...
+	"hello-world": "./components/hello.js",
+	...
+}
+```
+
+4. Restart noflo-nodejs and refresh your web browser.
+
+5.  Add the `RDF-COMPONENTS/HELLO-WORLD` component by clicking on the `default/main` link in the upper left hand corner of the page, typing the first few letters, "hello". Click the full component name in the list to select and add it as a new node to the graph. You may then click to drag it wherever you like on the page. ![adding hello-world](images/Add-Hello.png)
+
+6. Configure the `HELLO-WORLD` component to say hello to "world" by clicking on the `hello-world` node that appeared in the graph, and editing the `input` field in the configuration view that appears in the upper left hand corner.  Click into the `input` field and type: `World!` ![configuring hello-world node](images/Configure-Hello.png)
+
+7. Add the `RDF-COMPONENTS/VNI-DATA-OUTPUT` component by clicking on the `default/main` link in the upper left hand corner of the page, typing the first few letters, "vni-". Click the full component name in the list to select and add it as a new node to the graph. You may then click to drag it wherever you like on the page. ![adding data ouput](images/Add-Vni-Hello.png)
+
+8. Create a link between the `HELLO-WORLD` component's output and the `VNI-DATA-OUTPUT` component's input by clicking on the `hello-world` node's `output` port and dragging the mouse over to the `in` port of the `vni-data-ouput` node. ![linking hello-world to vni-data-output](images/Link-Hello.png)
+
+9. Execute the graph by clicking on the green arrow at the upper right corner of the page.   When it says "Finished", look at the window where you ran the noflo-server.  It should look something like this: ![hello-world output with input "World!"](images/Hello-Output.png)
+
+
 
 
 # Node Navigator
