@@ -27,7 +27,7 @@ git clone https://github.com/rdf-pipeline/noflo-ui.git -b develop
 git clone https://github.com/rdf-pipeline/noflo-rdf-components.git -b develop
 ```
 3. Install noflo-nodejs:
-   
+
 ```bash
 cd noflo-nodejs
 npm install
@@ -43,8 +43,8 @@ grunt build
 npm link
 cd ..
 ```
-5. Install noflo-rdf-components: 
-   
+5. Install noflo-rdf-components:
+
 ```bash
 cd noflo-rdf-components
 npm install
@@ -63,7 +63,7 @@ noflo-nodejs --register false --ide http://localhost:8080/ --secret secret --gra
 #Start the NoFlo UI
 noflo-ui --secret secret --host localhost --port 8080 --websocket ws://localhost:3569 &
 ```
- 
+
 ### Testing Your Installation
 
 The noflo-nodejs script runs a local NoFlo runtime, and--in our fork--serves up a web page to inspect the status of active nodes at [localhost:3569/node/](http://localhost:3569/node/).
@@ -72,9 +72,9 @@ The noflo-ui script runs the frontend, which connects to the runtime. Browsing t
 
 ![noflo ui without a graph](images/empty-ui.png)
 
-By clicking the name of the graph ( where it says `default/main` in the top left ), you should see a list of components. You can filter this list by typing a few characters of the component you wish to find. 
+By clicking the name of the graph ( where it says `default/main` in the top left ), you should see a list of components. You can filter this list by typing a few characters of the component you wish to find.
 
-Some basic components included with noflo are prefixed with `CORE`, such as `CORE/CALLBACK`. 
+Some basic components included with noflo are prefixed with `CORE`, such as `CORE/CALLBACK`.
 
 Many of our components start with the prefix `RDF-COMPONENTS`, such as `RDF-COMPONENTS/ADD-METADATA`.
 
@@ -98,10 +98,12 @@ When you click the blue triangle in the top right, it will run the flow, and pri
  * When LGTM consensus is reached, original Developer merges PR
 
 ## Best Practices
+ * If you come across a "BactrianCamelCase" variable name, it may refer to an imported module, a local class, or an enum
+ * When in doubt, we follow the [Google JavaScript Style Guide](https://google.github.io/styleguide/jsguide.html)
 
 
 ## Glossary
 - RDF: Resource Description Framework - an abstract specifications for conceptual modeling of information
-- JSON-LD: JSON with Linked Data - a concrete specification that implements RDF using JSON with context 
+- JSON-LD: JSON with Linked Data - a concrete specification that implements RDF using JSON with context
 - VNI: Virtual Node Instance
-- 
+-
