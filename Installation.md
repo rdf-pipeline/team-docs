@@ -27,7 +27,7 @@ This command worked on OSX with homebrew installed:
 brew cask install caskroom/versions/java7
 ```
 
-## 2. Install nodejs LTS 'argon' (version 4.x)
+## 2. Install nodejs LTS 'argon' (version 4.x) and grunt
 You can install the nodejs long term support version using [nvm](http://nvm.sh), through your platform's package manager, or directly from source. 
 
 NVM has the benefit that it will ensure you know the version you're running, though it is a little more involved. Instructions for installing using NVM are included below.
@@ -62,6 +62,13 @@ node -p -e 'process.cwd()' # run a one-liner
 #=> /home/your_user_name
 ```
 
+e. Install grunt:
+
+```bash
+npm update -g npm
+npm install -g grunt
+npm install -g grunt-cli
+```
 ## 3. Install noflo-ui from the RDF Pipeline Framework
 Clone the noflo-ui repository and checkout the develop branch. Follow the instructions in the README.md to install the branch globally via npm link.
 
