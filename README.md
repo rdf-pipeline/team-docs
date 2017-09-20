@@ -49,6 +49,7 @@ cd ..
 cd noflo-rdf-components
 npm install
 npm link noflo-nodejs
+cd ..
 ```
 
 6. run an empty NoFlo graph for testing
