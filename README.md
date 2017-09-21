@@ -11,7 +11,7 @@ The team-docs repository contains markdown files that describe installation, use
 
 ## Installation
 
-This is the quickstart guide. The long-form instructions are [here](Installation.md).
+This is the quickstart guide. The long-form instructions are [here](Installation.md).  See also [Troubleshooting](Troubleshooting.md).
 
 1. Install Prerequisites
    * (optional) Linux VM - Centos/Ubuntu
