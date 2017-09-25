@@ -106,7 +106,7 @@ When you click the blue triangle in the top right, it will run the flow, and pri
 
 
 ## Glossary
-- RDF: Resource Description Framework - an abstract specifications for conceptual modeling of information
-- JSON-LD: JSON with Linked Data - a concrete specification that implements RDF using JSON with context
-- VNI: Virtual Node Instance
+- RDF: Resource Description Framework - a data flow framework for distributed processing and storage
+- JSON-LD: JSON with Linked Data - a JSON-based serialization of RDF data
+- VNI: Virtual Node Instance.  A single NoFlo node can represent multiple VNIs having the same functionality but processing different data.
 -
