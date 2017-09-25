@@ -69,9 +69,9 @@ npm update -g npm
 npm install -g grunt
 npm install -g grunt-cli
 ```
+
 ## 3. Install noflo-ui from the RDF Pipeline Framework
 Clone the noflo-ui repository and checkout the develop branch. Follow the instructions in the README.md to install the branch globally via npm link.   See also [Troubleshooting](Troubleshooting.md).
-
 
 ```bash
 # go to home directory...replace with directory of your chosing
@@ -81,9 +81,12 @@ git clone https://github.com/rdf-pipeline/noflo-ui.git
 cd noflo-ui
 git checkout develop
 npm install
+npm install --save-dev coffee-script
+npm update
 grunt build
 npm link
 ```
+
 ## 4. Install noflo-nodejs from the RDF Pipeline Framework
 Clone the noflo-nodejs repository and checkout the develop branch. Follow the instructions in the README.md to install the branch globally via npm link.
 
