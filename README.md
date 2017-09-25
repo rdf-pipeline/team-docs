@@ -39,6 +39,8 @@ cd ..
 ```bash
 cd noflo-ui
 npm install
+npm install --save-dev coffee-script
+npm update
 grunt build
 npm link
 cd ..
