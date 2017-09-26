@@ -93,8 +93,20 @@ When you click the blue triangle in the top right, it will run the flow, and pri
 
 [Full Guide](Getting-Started.md)
 
-### Gitflow
+## Development
 
+Developers will need to install the following packages in addition to those needed to run the RDF Pipeline Framework:
+
+```bash
+sudo apt install mocha
+npm install underscore
+npm install chai
+npm install sinon
+npm install rdfstore
+npm install jsonld
+```
+
+Our git protocol for developers:
  * Developer creates a branch or fork
  * Developer issues pull request (PR) with changes
  * Other developers review, and post comments or "LGTM" - "Looks good to me"
