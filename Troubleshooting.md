@@ -1,6 +1,6 @@
 # Troubleshooting
 
-## Installing and testing noflo-ui
+## noflo-ui install and test
 
 ### Symptom: Error when running grunt during noflo-ui installation: Module not found: Error: Cannot resolve module 'coffee-script/register'
 **Possible solution:** Before "grunt build"ing noflo-ui, you need to install coffee-script and run ```npm update```.
@@ -16,4 +16,23 @@ You may need an appropriate loader to handle this file type.
 
 
 ### Symptom: Cannot find index.html when testing the UI in the browser.
+
 **Possible solution:** You forgot to run ```grunt build```.
+
+
+## noflo-rdf-components install and test
+
+### Symptom: 'compare-rdf should print usage if given no command line arguments: Uncaught AssertionError: expected 1 to equal 2' when running ```mocha test```
+
+**Possible solution:** Install python module rdflib:
+```bash
+pip install rdflib
+```
+
+
+### Symptom: 'ImportError: No module named rdflib' when running ```mocha test```
+
+**Possible solution:** Install python module rdflib:
+```bash
+pip install rdflib
+```
