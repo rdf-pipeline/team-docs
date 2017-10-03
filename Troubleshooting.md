@@ -36,3 +36,8 @@ pip install rdflib
 ```bash
 pip install rdflib
 ```
+
+
+### Symptom: rdflib.plugin.PluginException: No plugin registered for (json-ld, <class 'rdflib.parser.Parser'>)
+
+**Possible solution:** 
