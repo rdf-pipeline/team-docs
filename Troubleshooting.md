@@ -43,6 +43,6 @@ pip install rdflib
 **Possible solution:** 
 
 
-### Symptom: ERROR:  'Could not compile stylesheet'
+### Symptom: ERROR:  'Could not compile stylesheet' when running ```mocha test```
 
 **Possible solution:**
