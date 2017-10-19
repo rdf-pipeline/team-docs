@@ -46,3 +46,8 @@ pip install rdflib
 ### Symptom: ERROR:  'Could not compile stylesheet' when running ```mocha test```
 
 **Possible solution:**
+
+### Symptom: During "mocha test": Uncaught TypeError: callback is not a function at . . . noflo-rdf-components/node_modules/noflo-groups/node_modules/noflo-core/node_modules/noflo/lib/Component.js
+
+**Possible solution:**
+
