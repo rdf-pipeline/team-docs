@@ -11,6 +11,8 @@ The team-docs repository contains markdown files that describe installation, use
 
 ## Installation
 
+*[Tested 23-Oct-2017 on Ubuntu 16.04 by @dbooth-boston]*
+
 This is the quickstart guide. The long-form instructions are [here](Installation.md).  See also [Troubleshooting](Troubleshooting.md).
 
 1. Install Prerequisites
@@ -69,6 +71,8 @@ noflo-ui --secret secret --host localhost --port 8080 --websocket ws://localhost
 
 ### Testing Your Installation
 
+*[Tested 23-Oct-2017 on Ubuntu 16.04 by @dbooth-boston]*
+
 The noflo-nodejs script runs a local NoFlo runtime, and--in our fork--serves up a web page to inspect the status of active nodes at [localhost:3569/node/](http://localhost:3569/node/).
 
 The noflo-ui script runs the frontend, which connects to the runtime. Browsing to [localhost:3569](http://localhost:3569/) should automatically forward to the UI, which is served from [localhost:8080](http://localhost:8080/).  This is the interface where you will create your pipeline graph. Currently it should be empty, and look something like this:
@@ -84,6 +88,8 @@ Many of our components start with the prefix `RDF-COMPONENTS`, such as `RDF-COMP
 If you see a long list of components that includes both of these examples, then your installation is likely successful. Let's try to create and run a graph to check!
 
 ## Getting Started
+
+*[Tested 23-Oct-2017 on Ubuntu 16.04 by @dbooth-boston]*
 
 Open [localhost:3569](http://localhost:3569/) in your browser, click the `default/main` label and select the `CORE/Output` component to create a node in the graph. Click that node, and enter a string literal, such as "Hello, JSON!" in the input field labeled `in`.  Pressing `Escape`, `Tab`, or `Enter` should hide the inspector, leaving you with a canvas that looks like this:
 
