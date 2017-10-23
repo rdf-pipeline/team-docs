@@ -51,3 +51,8 @@ pip install rdflib
 
 **Possible solution:**
 
+## noflo-server install and test 
+
+### Symptom: During "grunt build": Warning: failed to fetch https://raw.githubusercontent.com/noflo/noflo/master/component.json, got 404 "Not Found"
+
+**Possible solution:**
