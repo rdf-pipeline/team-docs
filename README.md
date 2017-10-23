@@ -124,7 +124,7 @@ Our git protocol for developers:
 
 
 ## Glossary
-- RDF: Resource Description Framework - a data flow framework for distributed processing and storage
+- RDF: Resource Description Framework - a DL-logic-based assertion language for expressing facts/knowledge
 - JSON-LD: JSON with Linked Data - a JSON-based serialization of RDF data
 - VNI: Virtual Node Instance.  A single NoFlo node can represent multiple VNIs having the same functionality but processing different data.
 -
