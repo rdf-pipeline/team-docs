@@ -1,5 +1,7 @@
 # Troubleshooting
 
+**Table of Contents**
+
 <!-- toc -->
 
 - [noflo-ui install and test](#noflo-ui-install-and-test)
