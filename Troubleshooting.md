@@ -69,16 +69,16 @@ pip install rdflib
 
 ### rdflib.plugin.PluginException: No plugin registered for (json-ld, <class 'rdflib.parser.Parser'>)
 
-(No suggestions yet.)
+(No suggestions yet)
 
 ### ERROR:  'Could not compile stylesheet' when running ```mocha test```
 
-(No suggestions yet.)
+(No suggestions yet)
 
 
 ### During "mocha test": Uncaught TypeError: callback is not a function at . . . noflo-rdf-components/node_modules/noflo-groups/node_modules/noflo-core/node_modules/noflo/lib/Component.js
 
-(No suggestions yet.)
+(No suggestions yet)
 
 
 --------------------
@@ -86,5 +86,5 @@ pip install rdflib
 
 ### During "grunt build": Warning: failed to fetch https://raw.githubusercontent.com/noflo/noflo/master/component.json, got 404 "Not Found"
 
-(No suggestions yet.)
+(No suggestions yet)
 
