@@ -2,13 +2,28 @@ This page walks you through the process of getting a simple data transformation 
 
 # Table of Contents
 
- * [Background](#background-concepts)
- * [Building a Pipeline](#initial-pipeline)
-    * [Single-Path Pipeline](#wire-it-up)
-    * [Adding a Second Path](#adding-a-second-input)
- * [Build a New Component](#custom-components)
- * [Node Inspector](#node-navigator)
+<!-- toc -->
 
+- [Prerequisites](#prerequisites)
+- [Background concepts](#background-concepts)
+- [Building a Pipeline](#building-a-pipeline)
+  * [Read, Transform, Write](#read-transform-write)
+  * [Wire It Up](#wire-it-up)
+- [Adding a Second Input](#adding-a-second-input)
+- [Custom Components](#custom-components)
+  * [Hello World](#hello-world)
+- [Node Navigator](#node-navigator)
+- [Conclusion](#conclusion)
+- [TODO](#todo)
+- [References](#references)
+
+<!-- tocstop -->
+To re-generate the Table of Contents:
+
+```bash
+npm install --save markdown-toc
+./node_modules/.bin/markdown-toc -i Getting-Started.md
+```
 
 # Prerequisites
 * [Installation](./Installation.md)
