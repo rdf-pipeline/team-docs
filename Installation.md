@@ -4,7 +4,7 @@ The RDF Pipeline Framework is layered on node.js lts/argon (v4.8.0 as of this wr
  * noflo-nodejs - _the noflo engine_
  * noflo-ui - _the noflo frontend_ 
 
- So, you need to install each in turn and then finally link up our custom RDF Pipeline Framework [components](../noflo-rdf-components).
+These instructions will guide you through installing those and then linking up our custom RDF Pipeline Framework [components](../noflo-rdf-components).
 
 The RDF Pipeline Framework has been tested on Linux platforms: Centos 7.1, Ubuntu 14.04 and Ubuntu 16.04 and on Mac OSX: El Capitan 10.11.6 
 
